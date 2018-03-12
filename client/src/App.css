@@ -1,5 +1,5 @@
 .App {
-  width: 800px;
+  max-width: 800px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -13,6 +13,6 @@
 .App-content {
   background-color: #EFEFEF;
   min-height: 100vh;
-  padding: 20px;
+  padding: 30px;
   display: flex;
 }

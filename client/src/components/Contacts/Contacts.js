@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
 
 const ContactCard = styled.div`{
   float: left;
@@ -42,31 +41,16 @@ const ContactCard = styled.div`{
   .contactDetails span {
     font-weight: 400;
   }
+  @media screen and (max-width: 799px){
+    width: 100%;
+  }
 }
 `;
 
 class Contacts extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      data : []
-    }
-    this.renderContacts = this.renderContacts.bind(this);
-  }
-
-  componentDidMount(){
-    Axios.get('http://localhost:5000/api/contacts')
-      .then(results => {
-
-        this.setState( { data: results.data });
-      })
-      .catch((err) => {})
-
-  }
 
   renderContacts(){
-    console.log(this.state.data);
-    return (this.state.data.map(contact => {
+    return (this.props.contacts.map(contact => {
       return (
         <ContactCard className="contactCard" key={contact._id}>
           <div className="imgContainer">
