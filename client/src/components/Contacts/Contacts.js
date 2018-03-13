@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ContactCard = styled.div`{
@@ -47,31 +47,31 @@ const ContactCard = styled.div`{
 }
 `;
 
-class Contacts extends Component{
-
-  renderContacts(){
-    return (this.props.contacts.map(contact => {
-      return (
-        <ContactCard className="contactCard" key={contact._id}>
+export default ({data, filterSearch}) => {
+  const Contacts = data
+  .filter(name =>{
+    return name.name.toLowerCase().indexOf(filterSearch.toLowerCase()) >= 0
+  })
+  .map(name =>{
+    return (
+      <div className="contactItem" key={name._id}>
+        <ContactCard className="contactCard" key={name._id}>
           <div className="imgContainer">
-            <img className="avatar" src={contact.avatar} alt="" />
+            <img className="avatar" src={name.avatar} alt="avatar" />
           </div>
           <div className="contactInfo">
-            <h2 className="name">{contact.name}</h2>
-            <h3 className="email">{contact.email}</h3>
-            <h5 className="contactDetails"> Category: <span>{contact.category}</span></h5>
-            <h5 className="contactDetails"> Company: <span>{contact.company}</span></h5>
+            <h2 className="name">{name.name}</h2>
+            <h3 className="email">{name.email}</h3>
+            <h5 className="contactDetails"> Category: <span>{name.category}</span></h5>
+            <h5 className="contactDetails"> Company: <span>{name.company}</span></h5>
           </div>
         </ContactCard>
-      )
-    }))
-  }
-
-  render(){
-
-    return (<div>{this.renderContacts()}</div>)
-  }
+      </div>
+    )
+  })
+  return (
+    <div>
+      {Contacts}
+    </div>
+  );
 }
-
-
-export default Contacts;
