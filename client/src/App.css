@@ -1,7 +1,6 @@
 .App {
-  width: 800px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .App-header {

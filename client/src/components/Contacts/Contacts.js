@@ -10,7 +10,6 @@ const ContactCard = styled.div`{
   grid-template-columns: 50px 1fr;
   grid-gap: 20px;
   color: #1f1f1f;
-  font-weight: 100;
   margin: 10px;
   height: 150px;
   width: 350px;
@@ -54,7 +53,6 @@ export default ({data, filterSearch}) => {
   })
   .map(name =>{
     return (
-      <div className="contactItem" key={name._id}>
         <ContactCard className="contactCard" key={name._id}>
           <div className="imgContainer">
             <img className="avatar" src={name.avatar} alt="avatar" />
@@ -66,7 +64,6 @@ export default ({data, filterSearch}) => {
             <h5 className="contactDetails"> Company: <span>{name.company}</span></h5>
           </div>
         </ContactCard>
-      </div>
     )
   })
   return (
